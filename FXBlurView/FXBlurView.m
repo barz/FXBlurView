@@ -72,7 +72,7 @@
     memcpy(buffer1.data, CFDataGetBytePtr(dataSource), bytes);
     CFRelease(dataSource);
     
-    for (int i = 0; i < iterations; i++)
+    for (NSUInteger i = 0; i < iterations; i++)
     {
         //perform blur
         vImageBoxConvolve_ARGB8888(&buffer1, &buffer2, tempBuffer, 0, 0, boxSize, boxSize, NULL, kvImageEdgeExtend);
@@ -211,7 +211,7 @@
     {        
         //loop through until we find a view that's ready to be drawn
         self.viewIndex = self.viewIndex % [self.views count];
-        for (int i = self.viewIndex; i < [self.views count]; i++)
+        for (int i = self.viewIndex; i < (NSInteger)[self.views count]; i++)
         {
             FXBlurView *view = self.views[i];
             if (view.blurEnabled && view.dynamic && view.window &&
@@ -282,7 +282,7 @@
     
     int unsigned numberOfMethods;
     Method *methods = class_copyMethodList([UIView class], &numberOfMethods);
-    for (int i = 0; i < numberOfMethods; i++)
+    for (int unsigned i = 0; i < numberOfMethods; i++)
     {
         if (method_getName(methods[i]) == @selector(tintColor))
         {
@@ -441,7 +441,7 @@
     NSInteger index = [superview.subviews indexOfObject:self];
     if (index != NSNotFound)
     {
-        for (int i = index; i < [superview.subviews count]; i++)
+        for (int i = index; i < (NSInteger)[superview.subviews count]; i++)
         {
             UIView *view = superview.subviews[i];
             if (!view.hidden)
